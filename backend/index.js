@@ -1,12 +1,13 @@
 import express from "express";
 
-import { env } from "./config/env.config.js";
-import { connectDB } from "./config/db.connect.js";
+import { env } from "./Config/env.config.js";
+import { connectDB } from "./Config/db.connect.js";
 import { middlewareConfig } from "./Config/middleware.config.js";
 //
 import userRoutes from "./Routes/user.route.js";
 import companyRoutes from "./Routes/company.route.js";
 import jobRoutes from "./Routes/job.route.js";
+import applicationRoutes from "./Routes/application.route.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.get("/health", (req, res) => {
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/company", companyRoutes);
 app.use("/api/v1/job", jobRoutes);
+app.use("/api/v1/application", applicationRoutes);
 
 // server start
 const PORT = env.PORT || 8000;
