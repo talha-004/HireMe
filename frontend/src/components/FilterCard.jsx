@@ -19,7 +19,7 @@ const filterData = [
 
 const FilterCard = () => {
   return (
-    <div className="font-inter w-full p-3">
+    <div className=" w-full p-3">
       <h1 className="font-semibold text-lg flex gap-2 items-center">
         <Settings2 size="22" /> Filter Jobs
       </h1>

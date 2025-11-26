@@ -5,11 +5,14 @@ import Home from "@/components/Home";
 import Jobs from "@/components/Jobs";
 import Browse from "@/components/Browse";
 import { createBrowserRouter } from "react-router-dom";
+import Profile from "@/components/Profile";
+import JobDescription from "@/components/JobDescription";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <p>404</p>,
     children: [
       {
         path: "/",
@@ -28,8 +31,16 @@ export const router = createBrowserRouter([
         element: <Jobs />,
       },
       {
+        path: "/description/:id",
+        element: <JobDescription />,
+      },
+      {
         path: "/browse",
         element: <Browse />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

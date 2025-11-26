@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <div className="text-center text-slate-800  font-inter flex flex-col items-center justify-center gap-10 py-27 px-4">
+    <div className="text-center text-slate-800   flex flex-col items-center justify-center gap-10 py-20 px-4">
       <span className="w-fit px-4 py-1 rounded-full bg-slate-100 text-[#f83002] font-semibold">
         No. 1 Job Hunt Website
       </span>

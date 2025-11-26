@@ -9,8 +9,8 @@ import {
 
 const router = express.Router();
 
-router.get("/get", isAuthenticated, getAllJobs);
-router.get("/get/:id", isAuthenticated, getJobById);
+router.get("/get", getAllJobs);
+router.get("/get/:id", getJobById);
 
 // hr routes
 router.post("/post", isAuthenticated, postJob);

@@ -23,7 +23,7 @@ const category = [
 const CategoryCarousel = () => {
   return (
     <div>
-      <Carousel className="w-full max-w-4xl mx-auto">
+      <Carousel className="w-full max-w-4xl mx-auto mt-6">
         <CarouselContent>
           {category.map((ele, idx) => (
             <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/4">

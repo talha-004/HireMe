@@ -3,7 +3,7 @@ import Job from "./Job";
 const randomJobs = [1, 2, 3];
 const Browse = () => {
   return (
-    <div className="max-w-7xl mx-auto my-10 px-6 font-inter">
+    <div className="max-w-7xl mx-auto my-10 px-6 ">
       <h1 className="font-medium text-lg">
         Search Results {randomJobs.length}
       </h1>

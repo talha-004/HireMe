@@ -77,10 +77,11 @@ const Signup = () => {
           <Label>Full Name</Label>
           <Input
             type="text"
-            placeholder="patel"
+            placeholder="John Doe"
             value={input.fullName}
             name="fullName"
             onChange={changeEventHandler}
+            className="placeholder:text-slate-400 font-normal "
           />
         </div>
 
@@ -92,6 +93,7 @@ const Signup = () => {
             value={input.email}
             name="email"
             onChange={changeEventHandler}
+            className="placeholder:text-slate-400 font-normal "
           />
         </div>
 
@@ -103,6 +105,7 @@ const Signup = () => {
             value={input.phoneNumber}
             name="phoneNumber"
             onChange={changeEventHandler}
+            className="placeholder:text-slate-400 font-normal "
           />
         </div>
 
@@ -115,6 +118,7 @@ const Signup = () => {
             name="password"
             autocomplete="current-password"
             onChange={changeEventHandler}
+            className="placeholder:text-slate-400 font-normal "
           />
         </div>
 
@@ -130,6 +134,7 @@ const Signup = () => {
                 value="student"
                 checked={input.role === "student"}
                 onChange={changeEventHandler}
+                className="placeholder:text-slate-400 font-normal "
                 className="cursor-pointer"
                 defaultChecked
               />
@@ -142,6 +147,7 @@ const Signup = () => {
                 value="recruiter"
                 checked={input.role === "recruiter"}
                 onChange={changeEventHandler}
+                className="placeholder:text-slate-400 font-normal "
                 className="cursor-pointer"
               />
               <Label htmlFor="option-two">Recruiter</Label>

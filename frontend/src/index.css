@@ -4,6 +4,7 @@
 @theme {
   --font-inter: "Inter", "sans-serif";
   --font-stack: "Stack Sans Text", "sans-serif";
+  --font-sans: "Inter", sans-serif;
 }
 
 @import "tw-animate-css";
