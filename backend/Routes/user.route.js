@@ -6,10 +6,11 @@ import {
   updateProfile,
 } from "../Controllers/user.controller.js";
 import { isAuthenticated } from "../Middleware/auth.js";
+import { singleUpload } from "../Middleware/multer.js";
 
 const router = express.Router();
 
-router.post("/register", register);
+router.post("/register", singleUpload, register);
 router.post("/login", login);
 router.post("/profile/update", isAuthenticated, updateProfile);
 router.get("/profile/logout", isAuthenticated, logout);

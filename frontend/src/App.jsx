@@ -1,10 +1,14 @@
-import { Button } from "@/components/ui/button";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/shared/Navbar";
+import Footer from "./components/shared/Footer";
 
 function App() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button outline="true">Click me</Button>
-    </div>
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
   );
 }
 
