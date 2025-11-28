@@ -27,7 +27,7 @@ const UpdateProfileDialogue = ({ open, setOpen }) => {
     phoneNumber: user?.phoneNumber,
     bio: user?.profile?.bio,
     skills: user?.profile?.skills,
-    file: user?.profile?.resume,
+    resume: user?.profile?.resume,
   });
 
   const changeEventHandler = (e) => {
@@ -35,8 +35,13 @@ const UpdateProfileDialogue = ({ open, setOpen }) => {
   };
 
   const fileChangeHandler = (e) => {
-    const file = e.targer.files?.[0];
-    setInput({ ...input, file });
+    // console.log(e.target.files?.[0]);
+
+    const file = e.target.files?.[0];
+    setInput({ ...input, resume: file });
+    console.log("SELECTED FILE: ", file);
+    console.log("MIME TYPE: ", file.type);
+    console.log("SIZE IN BYTES: ", file.size);
   };
 
   const submitHandler = async (e) => {
@@ -47,11 +52,12 @@ const UpdateProfileDialogue = ({ open, setOpen }) => {
     formData.append("phoneNumber", input.phoneNumber);
     formData.append("bio", input.bio);
     formData.append("skills", input.skills);
-    if (input.file) {
-      formData.append("file", input.file);
+    if (input.resume) {
+      formData.append("resume", input.resume);
     }
 
     try {
+      setLoading(true);
       const res = await axios.post(
         `${USER_API_END_POINT}/profile/update`,
         formData,
@@ -67,6 +73,8 @@ const UpdateProfileDialogue = ({ open, setOpen }) => {
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
 
     setOpen(false);
@@ -150,16 +158,14 @@ const UpdateProfileDialogue = ({ open, setOpen }) => {
 
             {/* resume */}
             <div className="space-y-2">
-              <Label htmlFor="file" className="text-right">
-                file
+              <Label htmlFor="resume" className="text-right">
+                Resume
               </Label>
-              <Input
-                onChange={fileChangeHandler}
-                id="file"
-                name="file"
+              <input
                 type="file"
+                name="resume"
                 accept="application/pdf"
-                value={input.resume}
+                onChange={fileChangeHandler}
               />
             </div>
             <DialogFooter>

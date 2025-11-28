@@ -15,7 +15,6 @@ export const register = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
-    console.log(user);
 
     if (user) {
       return res
@@ -118,17 +117,13 @@ export const logout = async (req, res) => {
 export const updateProfile = async (req, res) => {
   try {
     const { fullName, phoneNumber, email, bio, skills } = req.body;
+    const resume = req.file;
 
-    const file = req.file;
-
-    // cloudinary upload can be added here
-    // ....
     let skillsArray;
     if (skills) {
       skillsArray = skills.split(",").map((skill) => skill.trim());
     }
     const userId = req.id; //from middleware auth
-
     let user = await User.findById(userId).select("-password -__v");
 
     if (!user) {
@@ -143,9 +138,9 @@ export const updateProfile = async (req, res) => {
     if (email) user.email = email;
     if (bio) user.profile.bio = bio;
     if (skills) user.profile.skills = skillsArray;
-
-    // resume upload comes here
-    // ....
+    if (resume) {
+      console.log("this function is trigger");
+    }
 
     await user.save();
 

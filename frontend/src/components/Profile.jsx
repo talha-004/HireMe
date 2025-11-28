@@ -20,7 +20,7 @@ const Profile = () => {
         {/* profile */}
         <div className="flex justify-between gap-4 lg:gap-64">
           <div className="flex items-start md:items-center gap-4">
-            <Avatar className="cursor-pointer h-24 w-24">
+            <Avatar className="cursor-pointer h-24 w-24 rounded-2xl">
               <AvatarImage
                 src="https://github.com/shadcn.png"
                 alt="@maxleiter"
@@ -30,7 +30,7 @@ const Profile = () => {
               <h1 className="font-semibold text-3xl font-stack mb-1">
                 {user.fullName}
               </h1>
-              <p>
+              <p className="text-gray-700 font-medium">
                 {user?.profile?.bio ? (
                   user?.profile?.bio
                 ) : (
@@ -86,10 +86,10 @@ const Profile = () => {
           {isHaveResume ? (
             <a
               target="_blank"
-              href="https://www.google.com"
+              href={user?.profile?.resume}
               className="text-blue-400 hover:underline cursor-pointer"
             >
-              View
+              {user?.profile?.resumeOriginalName}
             </a>
           ) : (
             <span>No resume found</span>
