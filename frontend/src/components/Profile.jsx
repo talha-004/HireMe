@@ -65,7 +65,7 @@ const Profile = () => {
         <div className="flex gap-4">
           <h1 className="font-semibold">Skills:</h1>
           {user.profile.skills.length !== 0 ? (
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap">
               {user.profile.skills.map((item, idx) => (
                 <Badge
                   key={idx}

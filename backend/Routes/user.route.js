@@ -15,4 +15,7 @@ router.post("/login", login);
 router.post("/profile/update", isAuthenticated, singleUpload, updateProfile);
 router.get("/profile/logout", isAuthenticated, logout);
 
+//check login on refresh
+// router.get("/",  checkUserLoginOnRefresh);
+
 export default router;

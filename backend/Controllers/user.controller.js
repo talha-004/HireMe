@@ -1,6 +1,6 @@
 import { User } from "../Models/user.model.js";
 import { hashPassword, comparePassword } from "../Utils/bcrypt.js";
-import { generateToken } from "../Utils/jwtToken.js";
+import { generateToken, verifyToken } from "../Utils/jwtToken.js";
 
 // ========== User Registration, login, logout ========== //
 
@@ -109,6 +109,26 @@ export const logout = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ success: false, message: "Logout failed", error });
+  }
+};
+
+export const checkUserLoginOnRefresh = (req, res) => {
+  try {
+    const token = req.cookies.token;
+    if (!token) {
+      return res
+        .status(401)
+        .json({ success: false, message: "User not authenticated" });
+    }
+    const decoded = verifyToken(token);
+
+    if (!decoded) {
+      return res.status(401).json({ success: false, message: "Invalid token" });
+    }
+
+    req.id = decoded.userId;
+  } catch (error) {
+    res.status(401).json({ success: false, message: error.message });
   }
 };
 

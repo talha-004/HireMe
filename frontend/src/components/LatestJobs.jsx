@@ -1,7 +1,9 @@
 import React from "react";
 import LatestJobsCards from "./LatestJobsCards";
-const jobs = [1, 2, 3, 4, 5, 6, 7, 8];
+import { useSelector } from "react-redux";
+
 const LatestJobs = () => {
+  const { allJobs } = useSelector((store) => store.job);
   return (
     <div className="text-center text-slate-800   flex flex-col items-center justify-center gap-6 py-20 px-4">
       <h1 className="text-4xl md:text-5xl font-bold leading-tight font-stack">
@@ -10,9 +12,13 @@ const LatestJobs = () => {
       </h1>
 
       <div className="grid grid-cols-3 gap-4 my-5">
-        {jobs.slice(0, 6).map((ele, idx) => (
-          <LatestJobsCards key={idx} />
-        ))}
+        {allJobs.length <= 0 ? (
+          <span> No Job Available</span>
+        ) : (
+          allJobs
+            ?.slice(0, 6)
+            .map((job) => <LatestJobsCards key={job?._id} job={job} />)
+        )}
       </div>
 
       {/* cards */}

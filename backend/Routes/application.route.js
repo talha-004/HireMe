@@ -9,8 +9,8 @@ import {
 
 const router = express.Router();
 
-router.post("/apply/:id", isAuthenticated, applyJob);
 router.get("/get", isAuthenticated, getAppliedJobs);
+router.post("/apply/:id", isAuthenticated, applyJob);
 
 // ========= HR  ========== //
 router.get("/:id/applicants", isAuthenticated, getApplicantsForJob);

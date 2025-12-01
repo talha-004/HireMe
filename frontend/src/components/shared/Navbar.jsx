@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import {
   Popover,
@@ -8,13 +8,33 @@ import {
 } from "@radix-ui/react-popover";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { ExternalLink, LogOut, User2 } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
+import { USER_API_END_POINT } from "@/utils/constant";
+import axios from "axios";
+import { setUser } from "@/redux/authSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // const user = false;
   const { user } = useSelector((store) => store.auth);
   const [open, setOpen] = useState(false);
-
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get(`${USER_API_END_POINT}/profile/logout`, {
+        withCredentials: true,
+      });
+      if (res.data.success) {
+        dispatch(setUser(null));
+        navigate("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
   return (
     <div className="bg-white px-4 ">
       <div className="flex items-center justify-between mx-auto max-w-7xl  h-16 ">
@@ -95,7 +115,7 @@ const Navbar = () => {
                           : user.fullName}
                       </h4>
                       <p className="text-sm text-muted-foreground">
-                        {user.profile.bio.length > 20
+                        {user?.profile?.bio?.length > 20
                           ? user.profile.bio.slice(0, 20).concat("...")
                           : user.profile.bio}
                       </p>
@@ -113,7 +133,7 @@ const Navbar = () => {
                     </div>
                   </Link> */}
 
-                  <Link to="/logout">
+                  <Link to="/" onClick={handleLogout}>
                     <div className=" group flex  items-center pl-4 hover:bg-slate-100 cursor-pointer rounded-lg">
                       <LogOut />
                       <Button className=" group-hover:bg-slate-100 hover:bg-slate-100 transition-none cursor-pointer bg-white text-black">
