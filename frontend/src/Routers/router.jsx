@@ -7,6 +7,9 @@ import Browse from "@/components/Browse";
 import { createBrowserRouter } from "react-router-dom";
 import Profile from "@/components/Profile";
 import JobDescription from "@/components/JobDescription";
+import Companies from "@/components/recruiter/Companies";
+import CompanyCreate from "@/components/recruiter/CompanyCreate ";
+import CompanySetUp from "@/components/recruiter/CompanySetUp";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +44,19 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      // for hr
+      {
+        path: "/r/companies",
+        element: <Companies />,
+      },
+      {
+        path: "/r/companies/create",
+        element: <CompanyCreate />,
+      },
+      {
+        path: "/r/companies/:id",
+        element: <CompanySetUp />,
       },
     ],
   },

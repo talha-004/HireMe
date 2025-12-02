@@ -45,42 +45,74 @@ const Navbar = () => {
         </Link>
         <div className="flex items-center gap-5">
           <ul className="flex font-medium items-center gap-5">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "border-b-2 border-orange-600"
-                    : "hover:border-b-2 hover:border-slate-300"
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/jobs"
-                className={({ isActive }) =>
-                  isActive
-                    ? "border-b-2 border-orange-600"
-                    : "hover:border-b-2 hover:border-slate-300"
-                }
-              >
-                Jobs
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/browse"
-                className={({ isActive }) =>
-                  isActive
-                    ? "border-b-2 border-orange-600"
-                    : "hover:border-b-2 hover:border-slate-300"
-                }
-              >
-                Browse
-              </NavLink>
-            </li>
+            {user && user.role === "recruiter" ? (
+              <>
+                <li>
+                  <NavLink
+                    to="/r/companies"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "border-b-2 border-orange-600"
+                        : "hover:border-b-2 hover:border-slate-300"
+                    }
+                  >
+                    Companies
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/r/jobs"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "border-b-2 border-orange-600"
+                        : "hover:border-b-2 hover:border-slate-300"
+                    }
+                  >
+                    Jobs
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                {" "}
+                <li>
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "border-b-2 border-orange-600"
+                        : "hover:border-b-2 hover:border-slate-300"
+                    }
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/jobs"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "border-b-2 border-orange-600"
+                        : "hover:border-b-2 hover:border-slate-300"
+                    }
+                  >
+                    Jobs
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/browse"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "border-b-2 border-orange-600"
+                        : "hover:border-b-2 hover:border-slate-300"
+                    }
+                  >
+                    Browse
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
           {user ? (
             <Popover open={open} onOpenChange={setOpen}>
