@@ -112,7 +112,7 @@ export const logout = async (req, res) => {
   }
 };
 
-export const checkUserLoginOnRefresh = (req, res) => {
+export const checkUserLoginOnRefresh = async (req, res) => {
   try {
     const token = req.cookies.token;
     if (!token) {
@@ -125,8 +125,9 @@ export const checkUserLoginOnRefresh = (req, res) => {
     if (!decoded) {
       return res.status(401).json({ success: false, message: "Invalid token" });
     }
+    const user = await User.findById(decoded.userId);
 
-    req.id = decoded.userId;
+    res.status(200).json({ success: true, user });
   } catch (error) {
     res.status(401).json({ success: false, message: error.message });
   }

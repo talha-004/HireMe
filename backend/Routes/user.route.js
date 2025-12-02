@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  checkUserLoginOnRefresh,
   login,
   logout,
   register,
@@ -16,6 +17,6 @@ router.post("/profile/update", isAuthenticated, singleUpload, updateProfile);
 router.get("/profile/logout", isAuthenticated, logout);
 
 //check login on refresh
-// router.get("/",  checkUserLoginOnRefresh);
+router.get("/refresh", checkUserLoginOnRefresh);
 
 export default router;

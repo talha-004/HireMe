@@ -28,7 +28,7 @@ const Profile = () => {
             </Avatar>
             <div>
               <h1 className="font-semibold text-3xl font-stack mb-1">
-                {user.fullName}
+                {user?.fullName}
               </h1>
               <p className="text-gray-700 font-medium">
                 {user?.profile?.bio ? (
@@ -53,20 +53,20 @@ const Profile = () => {
         <div className="border px-7 rounded-2xl flex gap-4 py-4 flex-wrap">
           <div className="flex items-center gap-3 my-2">
             <Mail size="20" className="text-slate-600" />
-            <span className="font-medium">{user.email}</span>
+            <span className="font-medium">{user?.email}</span>
           </div>
           <span className=" sm:border-l w-full sm:w-fit border-t border-gray-300 "></span>
           <div className="flex items-center gap-3 my-2">
             <Contact size="20" className="text-slate-600" />
-            <span className="font-medium">{user.phoneNumber}</span>
+            <span className="font-medium">{user?.phoneNumber}</span>
           </div>
         </div>
         {/* skills */}
         <div className="flex gap-4">
           <h1 className="font-semibold">Skills:</h1>
-          {user.profile.skills.length !== 0 ? (
+          {user?.profile.skills.length !== 0 ? (
             <div className="flex gap-3 flex-wrap">
-              {user.profile.skills.map((item, idx) => (
+              {user?.profile.skills.map((item, idx) => (
                 <Badge
                   key={idx}
                   className="text-sm text-black px-3 bg-gray-200 rounded-sm"
