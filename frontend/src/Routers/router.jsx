@@ -10,6 +10,7 @@ import JobDescription from "@/components/JobDescription";
 import Companies from "@/components/recruiter/Companies";
 import CompanyCreate from "@/components/recruiter/CompanyCreate ";
 import CompanySetUp from "@/components/recruiter/CompanySetUp";
+import PostedJobs from "@/components/recruiter/PostedJobs";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "/r/companies/:id",
         element: <CompanySetUp />,
+      },
+      {
+        path: "/r/jobs",
+        element: <PostedJobs />,
       },
     ],
   },
